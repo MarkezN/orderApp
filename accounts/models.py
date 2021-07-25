@@ -40,7 +40,7 @@ class CustomAccManager(BaseUserManager):
 
 # Create your models here.
 class NewUser(AbstractBaseUser, PermissionsMixin):   
-	email = models.EmailField(_('email address'), unique=True)
+	email = models.EmailField(_('email address'), unique=True,)
 	user_name= models.CharField(max_length=100, unique=True)
 	ime = models.CharField(max_length=150, blank=True)
 	prezime = models.CharField(max_length=150)
