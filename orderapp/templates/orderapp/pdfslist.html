@@ -1,0 +1,12 @@
+{% extends 'orderapp/home.html' %}
+{% block content %}
+
+
+
+
+{% for p in pdfs %}
+<h2>{{ p.title }} ---- {{ p.autor }} --- <a href="{{ p.fajlovi.url }}">Download file</a></h2>
+{% endfor %}-->
+
+
+{% endblock %}

@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import RegisterForm, LoginForm
+from .forms import RegisterForm, LoginForm, PdfsForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from .models import Pdfs
+from django.core.files.storage import FileSystemStorage  
 
 
 
@@ -16,9 +18,6 @@ def home_view(request):
 def log_view(request):  
 
 	if request.method == 'POST':
-
-
-	
 		email = request.POST.get('email')
 		password = request.POST.get('password1')
 
@@ -51,3 +50,34 @@ def reg_view(request):
 		form = RegisterForm()
 
 	return render(request, 'orderapp/reg.html', {'form': form})	
+
+
+
+# def upload_file(request):
+# 	context = {}
+# 	if request.method == 'POST':  
+# 		file = request.FILES['document']
+# 		fs = FileSystemStorage()
+# 		name = fs.save(file.name, file)
+# 		url = fs.url(name)
+# 		context['url'] = fs.url(name)
+
+# 	return render(request, 'orderapp/upload_file.html', context)
+
+@login_required(login_url="log_view")	
+def pdfs_list(request):  
+   	pdfs = Pdfs.objects.all() 
+   	return render(request, 'orderapp/pdfslist.html', {'pdfs': pdfs}) 
+
+@login_required(login_url="log_view")
+def upload_pdfs(request):
+    if request.method == 'POST':
+        form = PdfsForm(request.POST, request.FILES)
+        if form.is_valid():   
+            form.save()
+            return redirect('list')
+    else:    
+        form = PdfsForm()        
+    return render(request, 'orderapp/upload.html', {'form': form})     
+
+

@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from accounts.models import NewUser
+from .models import Pdfs
 
 
 
@@ -21,6 +22,13 @@ class LoginForm(UserCreationForm):
 		fields = ('email', 'password1')
 
 		
+
+
+class PdfsForm(forms.ModelForm):  
+		  
+	class Meta:  
+		model = Pdfs
+		fields = ('__all__')
 
   
 		# widgets = {

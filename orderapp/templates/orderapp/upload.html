@@ -1,0 +1,17 @@
+{% extends 'orderapp/home.html' %}
+
+
+{% block content %}
+
+<h1>Upload file</h1>
+
+<form method="post" enctype="multipart/form-data"> 
+	 {% csrf_token %}
+
+	{{ form.as_p }}
+
+	<button type="submit" class="btn btn-primary btn-lg">Upload file</button>
+
+ </form>
+
+{% endblock  %}
