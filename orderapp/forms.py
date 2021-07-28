@@ -23,27 +23,25 @@ class LoginForm(UserCreationForm):
 
 		
 
+			
+
 
 class PdfsForm(forms.ModelForm):  
 		  
 	class Meta:  
 		model = Pdfs
-		fields = ('__all__')
+		fields = ('title', 'autor', 'fajlovi')
+
+
+		widgets = {
+
+			'title' : forms.TextInput(attrs ={'class': 'form-control', 'placeholder': "Title"}),
+			'autor' : forms.TextInput(attrs ={'class': 'form-control', 'placeholder': "Autor"}),
+			'fajlovi': forms.FileInput(attrs ={'class': 'form-control', 'placeholder': "Browse..."}),
+		}
 
   
-		# widgets = {
-  #           'user_name' : forms.TextInput(attrs = {'placeholder': 'Username'}),
-  #           'email'    : forms.TextInput(attrs = {'placeholder': 'Email'}),
-  #           'ime' : forms.TextInput(attrs = {'placeholder': 'Ime'}),
-  #           'prezime'    : forms.TextInput(attrs = {'placeholder': 'Prezime'}),
-  #           'adresa' : forms.TextInput(attrs = {'placeholder': 'Adresa'}),
 
-           
-
-  #           'password1' : forms.PasswordInput(attrs = {'placeholder': 'Password'}),
-  #           'password2' : forms.PasswordInput(attrs={'placeholder': 'Confirm password'}),
-  #       }
-		
 
 
 

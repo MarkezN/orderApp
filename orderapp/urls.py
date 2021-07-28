@@ -14,6 +14,7 @@ urlpatterns = [
     #path('file/', views.upload_file, name='upload_file'),
     path('upload/', views.upload_pdfs, name='upload'),
     path('pdfs/', views.pdfs_list, name='list'),
+    path('pdfs/<int:pk>/', views.delete_file, name='delete_file')
     
 ]
 

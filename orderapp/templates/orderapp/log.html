@@ -57,6 +57,7 @@
     <h1>Login Form</h1>
     <div class="main-agileinfo">
       <div class="agileits-top">
+        <div class="form-group">
         <form action="#" method="post">
           {% csrf_token %}
 
@@ -78,7 +79,7 @@
       {% for m in messages  %}
           <p class="message"> {{ m }} </p>
       {% endfor %}    
-
+</div>
     </div>
 
    

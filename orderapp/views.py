@@ -9,7 +9,6 @@ from django.core.files.storage import FileSystemStorage
 
 
 
-
 @login_required(login_url="log_view")
 def home_view(request):
 	return render(request, 'orderapp/home.html')
@@ -51,8 +50,6 @@ def reg_view(request):
 
 	return render(request, 'orderapp/reg.html', {'form': form})	
 
-
-
 # def upload_file(request):
 # 	context = {}
 # 	if request.method == 'POST':  
@@ -63,6 +60,7 @@ def reg_view(request):
 # 		context['url'] = fs.url(name)
 
 # 	return render(request, 'orderapp/upload_file.html', context)
+
 
 @login_required(login_url="log_view")	
 def pdfs_list(request):  
@@ -80,4 +78,9 @@ def upload_pdfs(request):
         form = PdfsForm()        
     return render(request, 'orderapp/upload.html', {'form': form})     
 
+def delete_file(request,pk):   
+	if request.method == 'POST':  
+		pdf = Pdfs.objects.get(pk=pk)
+		pdf.delete()
+	return redirect('list')	
 

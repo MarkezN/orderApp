@@ -1,17 +1,20 @@
 {% extends 'orderapp/home.html' %}
-
+{% load crispy_forms_tags %}
 
 {% block content %}
-
-<h1>Upload file</h1>
+<div class="form-group">
+<h1 style="text-align: center; margin-top: 20px; font-family: serif;">Upload</h1>
 
 <form method="post" enctype="multipart/form-data"> 
 	 {% csrf_token %}
 
-	{{ form.as_p }}
+	 <p style="margin-top: 10px">	{{ form.title  }} </p>
+	 <p style="margin-top: 10px">	{{ form.autor}}  </p>
+	 <p style="margin-top: 10px">	{{ form.fajlovi }} </p>
+
 
 	<button type="submit" class="btn btn-primary btn-lg">Upload file</button>
 
  </form>
-
+</div>
 {% endblock  %}
