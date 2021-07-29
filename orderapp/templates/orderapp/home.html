@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
-<html>
+<html style="height: 100%">
 
 <head>
     <meta charset="UTF-8">
@@ -11,9 +11,7 @@
     <title>OrderApp</title>
 </head>
 
-<body>
-  
-
+<body style="height: 100%">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">OrderApp</a>
@@ -25,8 +23,11 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'upload' %}">Upload</a>
                     </li>
-                     <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" href="{% url 'list' %}">FileList</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'comment_list' %}">Comments</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Order</a>
@@ -36,24 +37,15 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="#" tabindex="-1" aria-disabled="true">Hi, {{ request.user }}</a>
                     </li>
-
                     <li class="nav-item">
-                       <button class="btn btn-outline-success" type="submit"><a href="{% url 'logout' %}">Logout</a></button>
+                        <button class="btn btn-outline-success" type="submit"><a href="{% url 'logout' %}">Logout</a></button>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-
-
-    <div class="container">
-         {% block content  %}
-        {% endblock %}
-    </div>
-
-
-     
-   
+    {% block content %}
+    {% endblock %}
 </body>
 
 </html>

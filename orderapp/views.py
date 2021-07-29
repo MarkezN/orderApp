@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import RegisterForm, LoginForm, PdfsForm
+from .forms import RegisterForm, LoginForm, PdfsForm, CommentForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Pdfs
+from .models import Pdfs, Comment
 from django.core.files.storage import FileSystemStorage  
 
 
@@ -83,4 +83,39 @@ def delete_file(request,pk):
 		pdf = Pdfs.objects.get(pk=pk)
 		pdf.delete()
 	return redirect('list')	
+
+
+def create_comment(request):   
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+        	comment = form.save(commit=False)
+        	if request.user == comment.autor:
+            		form.save()
+            		return redirect('comment_list')
+        	else:
+        			return redirect('create_comment')   
+
+    else:    
+        form = CommentForm()
+    return render(request, 'orderapp/create_comment.html', {'form': form})  
+    
+
+
+def list_comment(request):    
+    comment = Comment.objects.all()
+    return render(request, 'orderapp/comment_list.html', {'comment': comment}) 
+
+
+def delete_comment(request, pk):   
+	if request.method == 'POST':   
+		comment = Comment.objects.get(pk=pk)
+		comment.delete()
+	return redirect('comment_list')	    
+
+
+
+                 
+
+
 

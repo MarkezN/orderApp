@@ -1,0 +1,19 @@
+{% extends 'orderapp/home.html' %}
+{% block content %}
+<div class="container">
+    {% for c in comment %}
+    {% if request.user == c.autor %}
+    <form method="post" action="{% url 'delete_comment' c.pk %}">
+        {% csrf_token %}
+        <h1> {{ c.autor}} -- {{ c.tekst }}
+            <button type="submit" class="btn btn-dark btn-sm">Delete comment</button> </h1>
+    </form>
+    {% else %}
+    <h1> {{ c.autor}} -- {{ c.tekst }}
+        {% endif %}
+        {% endfor %}
+        <div style="margin-top: 40px">
+            <a href="{% url 'create_comment' %}"> <button type="submit" class="btn btn-dark btn-lg">New Comment</button></a>
+        </div>
+</div>
+{% endblock %}

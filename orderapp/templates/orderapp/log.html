@@ -1,92 +1,50 @@
 
-<!-- <!DOCTYPE html>
-{% load static %}
-
-<html>
-
-<head>
-
-  <link rel="stylesheet" type="text/css" href="{% static 'css/style2.css' %}">
-
-</head>
-<div class="login">
-  <div class="heading">
-    <h2>Sign in</h2>
-    <form action="#">
-
-      <div class="input-group input-group-lg">
-        <span class="input-group-addon"><i class="fa fa-user"></i></span>
-        <input type="text" class="form-control" placeholder="Email">
-          </div>
-
-        <div class="input-group input-group-lg">
-          <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-          <input type="password" class="form-control" placeholder="Password">
-        </div>
-
-        <button type="submit" class="float">Login</button>
-       </form>
- 		</div>
- </div>
-
-
- </html>  -->
-
-
-        
-        
-
 <!DOCTYPE html>
 {% load static %}
 <html>
-<head>
-<title>Login Form</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- Custom Theme files -->
-<link rel="stylesheet" type="text/css" media="all" href="{% static 'css/style2.css'%}">
-<!-- //Custom Theme files -->
-<!-- web font -->
-<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
-<!-- //web font -->
-</head>
-<body>
-  <!-- main -->
-  <div class="main-w3layouts wrapper">
-    <h1>Login Form</h1>
-    <div class="main-agileinfo">
-      <div class="agileits-top">
-        <div class="form-group">
-        <form action="#" method="post">
-          {% csrf_token %}
 
-                  {{ form.email.label_tag }}
-                 {{ form.email }} 
-                 
-                {{ form.password1.label_tag}}
-                {{  form.password1 }} 
-              
-       
-          <div class="wthree-text">
-           
-            <div class="clear"> </div>
-          </div>
-          <input type="submit" value="LOGIN">
-        </form>
-        <p>Don't have an Account? <a href="{% url 'reg_view' %}"> Register Now!</a></p>
-      </div>
-      {% for m in messages  %}
-          <p class="message"> {{ m }} </p>
-      {% endfor %}    
-</div>
+<head>
+    <title>Login Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="application/x-javascript">
+    addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+
+    function hideURLbar() { window.scrollTo(0, 1); }
+    </script>
+  
+    <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/style2.css'%}">
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+    <!-- //web font -->
+</head>
+
+<body>
+    <!-- main -->
+    <div class="main-w3layouts wrapper">
+        <h1>Login Form</h1>
+        <div class="main-agileinfo">
+            <div class="agileits-top">
+                <div class="form-group">
+                    <form action="#" method="post">
+                        {% csrf_token %}
+                        {{ form.email.label_tag }}
+                        {{ form.email }}
+                        {{ form.password1.label_tag}}
+                        {{ form.password1 }}
+                        <div class="wthree-text">
+                            <div class="clear"> </div>
+                        </div>
+                        <input type="submit" value="LOGIN">
+                    </form>
+                    <p>Don't have an Account? <a href="{% url 'reg_view' %}"> Register Now!</a></p>
+                </div>
+                {% for m in messages %}
+                <p class="message"> {{ m }} </p>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 
-   
-  </div>
-  <!-- //main -->
 </body>
+
 </html>
-
-
-        

@@ -1,0 +1,23 @@
+{% extends 'orderapp/home.html' %}
+{% block content %}
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <form method="post" class="col-12">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.autor.label_tag }}
+                {{ form.autor }}
+            </div>
+            <div class="form-group">
+                {{ form.headline }}
+            </div>
+            <div class="form-group">
+                {{ form.tekst }}
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-dark btn-lg">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -14,7 +14,12 @@ urlpatterns = [
     #path('file/', views.upload_file, name='upload_file'),
     path('upload/', views.upload_pdfs, name='upload'),
     path('pdfs/', views.pdfs_list, name='list'),
-    path('pdfs/<int:pk>/', views.delete_file, name='delete_file')
+    path('pdfs/<int:pk>/', views.delete_file, name='delete_file'),   
+    path('comments/', views.list_comment, name='comment_list'),
+    path('create/', views.create_comment, name='create_comment'),
+    path('comments/<int:pk>/', views.delete_comment, name='delete_comment'),
+
+
     
 ]
 

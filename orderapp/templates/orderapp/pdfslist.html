@@ -1,12 +1,26 @@
 {% extends 'orderapp/home.html' %}
 {% block content %}
 {% for p in pdfs %}
-<h2>{{ p.title }} ---- {{ p.autor }}
- <a href="{{ p.fajlovi.url }}"><button type="submit" class="btn btn-primary btn-lg">Download file</button></a>
-	<form method="post" action="{% url 'delete_file' p.pk %}">
-	 {% csrf_token %}
-	  <button type="submit" class="btn btn-primary btn-lg">Delete file</button>
-	</form>
-</h2>
+<div class="container">
+    <div class="row">
+       
+        <div class="col-sm-12" style="margin-top: 10px;">
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action active bg-dark style=" style="text-align:center; font-family: cursive;"> <h5> {{ p.title }} </h5></a>         
+          
+                <a href="#" class="list-group-item list-group-item-action" style="text-align: center; font-family: cursive;">{{ p.autor }}</a>
+                <a href="{{ p.fajlovi.url }}" class="list-group-item list-group-item-action" style="text-align: center; font-family: cursive;">Download</a>
+                <a href="#" class="list-group-item list-group-item-action" style="text-align: center;">
+                    <form method="post" action="{% url 'delete_file' p.pk %}">
+                        {% csrf_token %}
+                    <button type="submit" class="btn btn-dark btn-sm" style="font-family: cursive;">Delete</button> 
+                    </form>
+                </a>
+                
+            </div>
+        </div>
+        
+    </div>
+</div>
 {% endfor %}
 {% endblock %}
