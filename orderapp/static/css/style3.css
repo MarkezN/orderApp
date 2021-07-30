@@ -375,42 +375,6 @@ input.checkbox:checked:after {
 
 
 
-@-webkit-keyframes square {
-  0% {
-    -webkit-transform: translateY(0);
-    -moz-transform: translateY(0);
-    -o-transform: translateY(0);
-    -ms-transform: translateY(0);
-    transform: translateY(0);
-  }
-
-  100% {
-    -webkit-transform: translateY(-700px) rotate(600deg);
-    -moz-transform: translateY(-700px) rotate(600deg);
-    -o-transform: translateY(-700px) rotate(600deg);
-    -ms-transform: translateY(-700px) rotate(600deg);
-    transform: translateY(-700px) rotate(600deg);
-  }
-}
-
-@keyframes square {
-  0% {
-    -webkit-transform: translateY(0);
-    -moz-transform: translateY(0);
-    -o-transform: translateY(0);
-    -ms-transform: translateY(0);
-    transform: translateY(0);
-  }
-
-  100% {
-    -webkit-transform: translateY(-700px) rotate(600deg);
-    -moz-transform: translateY(-700px) rotate(600deg);
-    -o-transform: translateY(-700px) rotate(600deg);
-    -ms-transform: translateY(-700px) rotate(600deg);
-    transform: translateY(-700px) rotate(600deg);
-  }
-}
-
 /*-- responsive-design --*/
 @media(max-width:1440px) {
   input[type="text"], input[type="email"], input[type="password"] {
