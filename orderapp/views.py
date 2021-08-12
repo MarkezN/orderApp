@@ -5,7 +5,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Pdfs, Comment
-from django.core.files.storage import FileSystemStorage  
+from django.core.files.storage import FileSystemStorage
+from django.core.mail import send_mail  
+from django.conf import settings
 
 
 
@@ -111,7 +113,22 @@ def delete_comment(request, pk):
 	if request.method == 'POST':   
 		comment = Comment.objects.get(pk=pk)
 		comment.delete()
-	return redirect('comment_list')	    
+	return redirect('comment_list')	   
+
+
+def order(request):   
+	if request.method == 'POST':  
+		current_email = request.user.email
+		host_email = settings.EMAIL_HOST_USER
+		send_mail(
+			 'Obavestenje',
+			 'Postovani,vasa narudzbina je uspesno izvrsena. Hvala na poverenju.',
+			 '',   
+			 [current_email, host_email],    
+			 fail_silently=False,
+			 )
+	return render(request, 'orderapp/order.html')
+
 
 
 

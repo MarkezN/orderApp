@@ -18,6 +18,8 @@ urlpatterns = [
     path('comments/', views.list_comment, name='comment_list'),
     path('create/', views.create_comment, name='create_comment'),
     path('comments/<int:pk>/', views.delete_comment, name='delete_comment'),
+    path('order/', views.order, name='order'),
+
 
 
     

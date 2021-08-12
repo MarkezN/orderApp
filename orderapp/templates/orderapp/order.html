@@ -1,0 +1,29 @@
+{% extends 'orderapp/home.html' %}
+{% block content %}
+<div class="container">
+    <h1>Order here</h1>
+    <form method="post" action="{% url 'order' %}" onsubmit="return showAlert(event)">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-dark btn-lg">Naruci</button>
+    </form>
+    <p id="d"></p>
+</div>
+
+
+<script>
+function showAlert(e) {
+
+    var t;
+
+    if (confirm("Da li ste sigurni da zelite da narucite?")) {
+
+        t = document.getElementById("d").innerHTML = "Uspesno!";
+
+    } else {
+        e.preventDefault();
+        someBug();
+        return false;
+    }
+}
+</script>
+{% endblock %}
