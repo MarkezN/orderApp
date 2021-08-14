@@ -25,7 +25,7 @@ class PdfsForm(forms.ModelForm):
 		  
 	class Meta:  
 		model = Pdfs
-		fields = ('title', 'autor', 'fajlovi')
+		fields = ('title', 'autor', 'fajlovi', 'broj_stranica', 'cena_stranica')
 
 
 		widgets = {
@@ -33,6 +33,9 @@ class PdfsForm(forms.ModelForm):
 			'title' : forms.TextInput(attrs ={'class': 'form-control', 'placeholder': "Title"}),
 			'autor' : forms.TextInput(attrs ={'class': 'form-control', 'placeholder': "Autor"}),
 			'fajlovi': forms.FileInput(attrs ={'class': 'form-control', 'placeholder': "Browse..."}),
+			'broj_stranica': forms.NumberInput(attrs ={'class': 'form-control', 'placeholder': "Unesi broj stranica..."}),
+			'cena_stranica': forms.NumberInput(attrs ={'class': 'form-control', 'placeholder': "Unesi cenu..."}),
+
 		}
 
 

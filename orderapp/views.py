@@ -52,21 +52,11 @@ def reg_view(request):
 
 	return render(request, 'orderapp/reg.html', {'form': form})	
 
-# def upload_file(request):
-# 	context = {}
-# 	if request.method == 'POST':  
-# 		file = request.FILES['document']
-# 		fs = FileSystemStorage()
-# 		name = fs.save(file.name, file)
-# 		url = fs.url(name)
-# 		context['url'] = fs.url(name)
-
-# 	return render(request, 'orderapp/upload_file.html', context)
-
 
 @login_required(login_url="log_view")	
 def pdfs_list(request):  
    	pdfs = Pdfs.objects.all() 
+   	
    	return render(request, 'orderapp/pdfslist.html', {'pdfs': pdfs}) 
 
 @login_required(login_url="log_view")

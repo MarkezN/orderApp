@@ -8,7 +8,12 @@
             <div class="list-group">
                 <a href="#" class="list-group-item list-group-item-action active bg-dark style=" style="text-align:center; font-family: cursive;"> <h5> {{ p.title }} </h5></a>         
           
-                <a href="#" class="list-group-item list-group-item-action" style="text-align: center; font-family: Lobster;">{{ p.autor }}</a>
+                <p  class="list-group-item list-group-item-action" style="text-align: center; font-family: Lobster;">{{ p.autor }}</p>
+                  <p  class="list-group-item list-group-item-action" style="text-align: center; font-family: Lobster;"> Broj stranica: {{ p.broj_stranica }}</p>
+                    <p href="#" class="list-group-item list-group-item-action" style="text-align: center; font-family: Lobster;">Cena stranice: {{ p.cena_stranica }}</p>
+                 <p href="#" class="list-group-item list-group-item-action" style="text-align: center; font-family: Lobster;">Ukupna cena: {{ p.ukupno }}</p>
+              
+              
                 <a href="{{ p.fajlovi.url }}" class="list-group-item list-group-item-action" style="text-align: center; font-family: Lobster;">Download</a>
                 <a href="#" class="list-group-item list-group-item-action" style="text-align: center;">
                     <form method="post" action="{% url 'delete_file' p.pk %}">
@@ -16,11 +21,14 @@
                     <button type="submit" class="btn btn-dark btn-sm" style="font-family: Lobster;">Delete</button> 
                     </form>
                 </a>
-                
+
             </div>
         </div>
         
     </div>
 </div>
+
+
+
 {% endfor %}
 {% endblock %}

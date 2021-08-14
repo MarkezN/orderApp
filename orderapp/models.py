@@ -6,6 +6,8 @@ class Pdfs(models.Model):
 	title = models.CharField(max_length=250)
 	autor = models.CharField(max_length=250)
 	fajlovi = models.FileField(upload_to="docs/pdfs/")
+	broj_stranica = models.IntegerField(blank=False, null=True)
+	cena_stranica = models.IntegerField(null=True)
 
 
 	def __str__(self):   
@@ -17,6 +19,10 @@ class Pdfs(models.Model):
 		self.fajlovi.delete()
 		super().delete(*args, **kwargs)
 
+
+	@property 
+	def ukupno(self):   
+		return self.broj_stranica * self.cena_stranica   
 
 class Comment(models.Model): 
 
