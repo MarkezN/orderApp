@@ -8,12 +8,16 @@ from .models import Pdfs, Comment
 from django.core.files.storage import FileSystemStorage
 from django.core.mail import send_mail  
 from django.conf import settings
+from django.utils import timezone
+#from django.views.generic import ListView, DetailView
 
 
 
 @login_required(login_url="log_view")
 def home_view(request):
 	return render(request, 'orderapp/home.html')
+
+
 
 
 def log_view(request):  
@@ -54,10 +58,17 @@ def reg_view(request):
 
 
 @login_required(login_url="log_view")	
+
 def pdfs_list(request):  
-   	pdfs = Pdfs.objects.all() 
+    	pdfs = Pdfs.objects.all()
+    	
    	
-   	return render(request, 'orderapp/pdfslist.html', {'pdfs': pdfs}) 
+    	return render(request, 'orderapp/pdfslist.html', {'pdfs': pdfs}) 
+
+@login_required(login_url="log_view")
+def comment_list(request, pk):
+	pdf = Pdfs.objects.get(pk=pk)
+	return render(request, 'orderapp/comment_list.html', {'pdf' : pdf})
 
 @login_required(login_url="log_view")
 def upload_pdfs(request):
@@ -82,28 +93,20 @@ def create_comment(request):
         form = CommentForm(request.POST)
         if form.is_valid():
         	comment = form.save(commit=False)
-        	if request.user == comment.autor:
-            		form.save()
-            		return redirect('comment_list')
-        	else:
-        			return redirect('create_comment')   
+        	comment.autor = request.user
+        	comment.save()
+        	return redirect('list')
 
     else:    
-        form = CommentForm()
+       form = CommentForm()
     return render(request, 'orderapp/create_comment.html', {'form': form})  
     
-
-
-def list_comment(request):    
-    comment = Comment.objects.all()
-    return render(request, 'orderapp/comment_list.html', {'comment': comment}) 
-
 
 def delete_comment(request, pk):   
 	if request.method == 'POST':   
 		comment = Comment.objects.get(pk=pk)
 		comment.delete()
-	return redirect('comment_list')	   
+	return redirect('list')	   
 
 
 def order(request):   

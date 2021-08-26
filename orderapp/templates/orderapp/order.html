@@ -1,29 +1,10 @@
 {% extends 'orderapp/home.html' %}
 {% block content %}
-<div class="container">
-    <h1>Order here</h1>
-    <form method="post" action="{% url 'order' %}" onsubmit="return showAlert(event)">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-dark btn-lg">Naruci</button>
-    </form>
-    <p id="d"></p>
+<div class="container" style="margin-top: 20px;">
+    <div class="alert alert-dark" role="alert">
+        <h3>The order has been successfully completed!</h3>
+    </div>
+    <a href="{% url 'list' %}">
+        <button type="submit" class="btn btn-dark btn-lg" style="font-family: Lobster;">Back to Order</button> </a>
 </div>
-
-
-<script>
-function showAlert(e) {
-
-    var t;
-
-    if (confirm("Da li ste sigurni da zelite da narucite?")) {
-
-       // t = document.getElementById("d").innerHTML = "Uspesno!";
-
-    } else {
-        e.preventDefault();
- 
-        return false;
-    }
-}
-</script>
 {% endblock %}

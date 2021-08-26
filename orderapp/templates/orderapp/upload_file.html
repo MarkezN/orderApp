@@ -1,24 +1,12 @@
 {% extends 'orderapp/home.html' %}
-
-
 {% block content %}
-
 <h2>Upload file</h2>
-
 <form method="post" enctype="multipart/form-data">
-  
-
     {% csrf_token%}
     <input type="file" name="document">
     <button type="submit" class="btn btn-primary btn-lg">Upload file</button>
-    
-
 </form>
-
 {% if url %}
-
-    <p>Uploaded file: <a href="{{ url }}">{{ url }}</a></p>
-
-{%  endif %}
-
+<p>Uploaded file: <a href="{{ url }}">{{ url }}</a></p>
+{% endif %}
 {% endblock %}

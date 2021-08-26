@@ -1,82 +1,41 @@
-
 {% load static %}
-
 <!DOCTYPE html>
- 
 <html>
+
 <head>
-<title>Register Form</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- Custom Theme files -->
-<link rel="stylesheet" type="text/css" media="all" href="{% static 'css/style2.css'%}">
-<!-- //Custom Theme files -->
-<!-- web font -->
-<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
-<!-- //web font -->
+    <title>Register Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="application/x-javascript">
+    addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+
+    function hideURLbar() { window.scrollTo(0, 1); }
+    </script>
+    <!-- Custom Theme files -->
+    <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/style2.css'%}">
+    <!-- //Custom Theme files -->
+    <!-- web font -->
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+    <!-- //web font -->
 </head>
+
 <body>
-  <!-- main -->
-
-  <div class="main-w3layouts wrapper">
-    <h1>Registration Form</h1>
-    <div class="main-agileinfo">
-      <div class="agileits-top">
-        <form action="#" method="post">
-          <input
-          {% csrf_token %}
-
-                  {{  form.email.label_tag }}
-                 {{ form.email }} 
-               
-                
-                  {{ form.user_name.label_tag }}
-                  {{ form.user_name }}
-
-               
-                {{ form.ime.label_tag }}
-                {{ form.ime }}
-           
-
-                {{ form.prezime.label_tag }}
-                {{ form.prezime }}
-             
-
-
-                {{ form.adresa.label_tag }}
-                {{  form.adresa }}
-              
-        
-                {{ form.password1.label_tag }}
-                {{  form.password1 }} 
-                
-                
-
-                {{ form.password2.label_tag }}
-                {{ form.password2 }}
-          
-                 
-
-
-    
-       
-          <div class="wthree-text">
-           
-            <div class="clear"> </div>
-          </div>
-          <input type="submit" value="REGISTER">
-        </form>
-        <p>Already have an Account? <a href="{% url 'log_view' %}"> Login Now!</a></p>
-      </div>
+    <!-- main -->
+    <div class="main-w3layouts wrapper">
+        <h1>Registration Form</h1>
+        <div class="main-agileinfo">
+            <div class="agileits-top">
+                <form action="#" method="post">
+                    <input {% csrf_token %} {{  form.email.label_tag }} {{ form.email }} {{ form.user_name.label_tag }} {{ form.user_name }} {{ form.ime.label_tag }} {{ form.ime }} {{ form.prezime.label_tag }} {{ form.prezime }} {{ form.adresa.label_tag }} {{  form.adresa }} {{ form.password1.label_tag }} {{  form.password1 }} {{ form.password2.label_tag }} {{ form.password2 }} <div class="wthree-text">
+                    <div class="clear"> </div>
+            </div>
+            <input type="submit" value="REGISTER">
+            </form>
+            <p>Already have an Account? <a href="{% url 'log_view' %}"> Login Now!</a></p>
+        </div>
     </div>
-
-   
-  </div>
-  <!-- //main -->
-
-  
+    </div>
+    <!-- //main -->
 </body>
+
 </html>
-
-

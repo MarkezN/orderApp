@@ -1,25 +1,22 @@
 {% extends 'orderapp/home.html' %}
 {% block content %}
-{% for c in comment %}
-{% if request.user == c.autor %}
 <div class="container">
-    <h2 style="font-family: Lobster"> {{ c.autor }}</h2>
-    <h4 style="font-family: Lobster"> {{ c.headline }} </h4>
-    <p style="font-family: Lobster"> {{ c.tekst }}</p>
-    <form method="post" action="{% url 'delete_comment' c.pk %}">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-dark btn-sm">Delete comment</button>
-    </form>
-</div>
-{% else %}
-<div class="container">
-    <h2 style="font-family: Lobster"> {{ c.autor }}</h2>
-    <h4 style="font-family: Lobster"> {{ c.headline }} </h4>
-    <p style="font-family: Lobster"> {{ c.tekst }}</p>
-</div>
-{% endif %}
-{% endfor %}
-<div class="container" style="margin-top: 50px">
-    <a href="{% url 'create_comment' %}"> <button type="submit" class="btn btn-dark btn-sm">New Comment</button></a>
+    {% for c in pdf.comment_set.all %}
+    {% if request.user == c.autor %}
+    <div class="container">
+        <h2 style="font-family: Lobster"> {{ c.autor }}</h2>
+        <p style="font-family: Lobster"> {{ c.tekst }}</p>
+        <form method="post" action="{% url 'delete_comment' c.pk %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-dark btn-sm">Delete comment</button>
+        </form>
+    </div>
+    {% else %}
+    <div class="container">
+        <h2 style="font-family: Lobster"> {{ c.autor }}</h2>
+        <p style="font-family: Lobster"> {{ c.tekst }}</p>
+    </div>
+    {% endif %}
+    {% endfor %}
 </div>
 {% endblock %}

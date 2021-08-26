@@ -5,9 +5,14 @@
         <form method="post" class="col-12">
             {% csrf_token %}
             <div class="form-group">
-                {{ form.autor.label_tag }}
-                {{ form.autor }}
+                {{ form.fajl }}
             </div>
+            <!--    <div class="form-group">
+                
+                {{ form.autor.label_tag }}
+
+                {{ form.autor }}
+            </div> -->
             <div class="form-group">
                 {{ form.headline }}
             </div>

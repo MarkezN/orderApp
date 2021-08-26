@@ -5,7 +5,7 @@ class Pdfs(models.Model):
 
 	title = models.CharField(max_length=250)
 	autor = models.CharField(max_length=250)
-	fajlovi = models.FileField(upload_to="docs/pdfs/")
+	fajlovi = models.FileField(upload_to="docs/pdfs/", null=True)
 	broj_stranica = models.IntegerField(blank=False, null=True)
 	cena_stranica = models.IntegerField(null=True)
 
@@ -19,6 +19,7 @@ class Pdfs(models.Model):
 		self.fajlovi.delete()
 		super().delete(*args, **kwargs)
 
+	
 
 	@property 
 	def ukupno(self):   
@@ -26,7 +27,9 @@ class Pdfs(models.Model):
 
 class Comment(models.Model): 
 
+	fajl = models.ForeignKey(Pdfs, default=None, on_delete=models.CASCADE)
 	autor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
 	headline = models.CharField(max_length=150)
 	tekst = models.TextField()
 

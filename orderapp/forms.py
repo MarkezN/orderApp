@@ -26,7 +26,7 @@ class PdfsForm(forms.ModelForm):
 	class Meta:  
 		model = Pdfs
 		fields = ('title', 'autor', 'fajlovi', 'broj_stranica', 'cena_stranica')
-
+		ordering = ['-date_posted']
 
 		widgets = {
 
@@ -43,12 +43,12 @@ class CommentForm(forms.ModelForm):
 	class Meta:  
 		model = Comment
 
-		fields = '__all__'
+		fields = ('fajl', 'headline', 'tekst')
 		ordering = ['-date_posted']
 
 		widgets = {
-
-			'autor' : forms.Select(attrs ={'class': 'form-control', 'placeholder': "Autor"}),
+			'fajl' : forms.Select(attrs ={'class': 'form-control', 'placeholder': "Fajl.."}),
+			#'autor' : forms.Select(attrs ={'class': 'form-control', 'placeholder': "Autor"}),
 			'headline' : forms.TextInput(attrs ={'class': 'form-control', 'placeholder': "Headline"}),
 			'tekst': forms.Textarea(attrs ={'class': 'form-control', 'placeholder': "Unesi tekst..."}),
 		}

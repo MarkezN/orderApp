@@ -5,9 +5,10 @@ from django.conf.urls.static import static
 
 
 
+
 urlpatterns = [
    
-    path('', views.home_view, name='home_view'),
+   path('', views.home_view, name='home_view'),
     path('register/', views.reg_view, name='reg_view'),
     path('login/', views.log_view, name='log_view'),
     path('logout/', views.logout_view, name='logout'),
@@ -15,10 +16,12 @@ urlpatterns = [
     path('upload/', views.upload_pdfs, name='upload'),
     path('pdfs/', views.pdfs_list, name='list'),
     path('pdfs/<int:pk>/', views.delete_file, name='delete_file'),   
-    path('comments/', views.list_comment, name='comment_list'),
+    #path('comments/', views.list_comment, name='comment_list'),
     path('create/', views.create_comment, name='create_comment'),
-    path('comments/<int:pk>/', views.delete_comment, name='delete_comment'),
+    #path('comments/<int:pk>/', views.delete_comment, name='delete_comment'),
     path('order/', views.order, name='order'),
+    path('comments/<int:pk>/', views.comment_list, name='comment_list'),
+    path('comments/<int:pk>/delete', views.delete_comment, name='delete_comment'),
 
 
 
